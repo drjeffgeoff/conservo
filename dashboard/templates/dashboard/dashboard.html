@@ -1,0 +1,51 @@
+<div class="sidebar">
+  <h2>SoilSenseAI</h2>
+  <ul>
+    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+    <li><a href="#">Users</a></li>
+    <li><a href="#">History</a></li>
+    <li><a href="#">Predictions</a></li>
+    <li><a href="#">Upload Data</a></li>
+    <li><a href="#">Notifications</a></li>
+    <li><a href="#">Feedback</a></li>
+    <li><a href="#">Help/FAQ</a></li>
+    <li><a href="#">Settings</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+  </ul>
+</div>
+
+<div class="main-content">
+  <h1>Dashboard</h1>
+  <div class="fields">
+    {% for field in fields %}
+    <div class="field">
+      <h3>{{ field.name }}</h3>
+      <p>Average Rainfall: {{ field.rainfall }}</p>
+      <p>Average Moisture: {{ field.moisture }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="weather">
+    <h3>Today's Weather</h3>
+    <p>City: {{ weather.city }}</p>
+    <p>Temperature: {{ weather.temperature }} °C</p>
+    <p>Weather: {{ weather.description }}</p>
+  </div>
+
+  <div class="soil-moisture-chart">
+    <h3>Soil Moisture over time</h3>
+    <!-- Use Chart.js or Plotly for displaying the chart -->
+    <canvas id="soilMoistureChart"></canvas>
+  </div>
+
+  <div class="notifications">
+    <h3>Notifications</h3>
+    {% for notification in notifications %}
+    <div class="notification">
+      <p>{{ notification.message }} - {{ notification.time }}</p>
+      <a href="#">Mark as read</a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
