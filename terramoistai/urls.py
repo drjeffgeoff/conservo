@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from accounts.views import CustomLoginView, CustomLogoutView
+from dashboard.views import dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
